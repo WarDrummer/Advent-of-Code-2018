@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets
+    xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Nested For-Loop</Title>
+      <Shortcut>nfor</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>outerCount</ID>
+          <ToolTip>Replace with outer loop count.</ToolTip>
+          <Default>COUNT</Default>
+        </Literal>
+        <Literal>
+          <ID>innerCount</ID>
+          <ToolTip>Replace with inner loop count.</ToolTip>
+          <Default>COUNT</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp">
+        <![CDATA[for(var i = 0; i < $outerCount$; i++)
+{
+  for(var j = 0; j < $innerCount$; j++)
+  {
+    $end$
+  }
+}
+        ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

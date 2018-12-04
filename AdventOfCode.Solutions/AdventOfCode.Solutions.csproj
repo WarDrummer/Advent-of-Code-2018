@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D79C2757-AE20-4A30-859F-2F5036F20130}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AdventOfCode.Solutions</RootNamespace>
+    <AssemblyName>AdventOfCode.Solutions</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Coordinates\AxialHexCoordinate.cs" />
+    <Compile Include="Coordinates\CubeHexCoordinate.cs" />
+    <Compile Include="Days\Day01A.cs" />
+    <Compile Include="Days\Day01B.cs" />
+    <Compile Include="Particle.cs" />
+    <Compile Include="Vector3.cs" />
+    <Compile Include="Extensions\MatrixExtensions.cs" />
+    <Compile Include="KnotHasher.cs" />
+    <Compile Include="Extensions\LinkedListExtensions.cs" />
+    <Compile Include="Node.cs" />
+    <Compile Include="Extensions\ArrayExtensions.cs" />
+    <Compile Include="BreadthFirstSearch.cs" />
+    <Compile Include="Problem\ClipboardDecorator.cs" />
+    <Compile Include="Coordinates\Coordinate.cs" />
+    <Compile Include="Extensions\DictionaryExtensions.cs" />
+    <Compile Include="Coordinates\SpiralCoordinates.cs" />
+    <Compile Include="Days\Day10A.cs" />
+    <Compile Include="Days\Day10B.cs" />
+    <Compile Include="Days\Day11A.cs" />
+    <Compile Include="Days\Day11B.cs" />
+    <Compile Include="Days\Day12A.cs" />
+    <Compile Include="Days\Day12B.cs" />
+    <Compile Include="Days\Day13A.cs" />
+    <Compile Include="Days\Day13B.cs" />
+    <Compile Include="Days\Day14A.cs" />
+    <Compile Include="Days\Day14B.cs" />
+    <Compile Include="Days\Day15A.cs" />
+    <Compile Include="Days\Day15B.cs" />
+    <Compile Include="Days\Day16A.cs" />
+    <Compile Include="Days\Day16B.cs" />
+    <Compile Include="Days\Day17A.cs" />
+    <Compile Include="Days\Day17B.cs" />
+    <Compile Include="Days\Day18B.cs" />
+    <Compile Include="Days\Day18A.cs" />
+    <Compile Include="Days\Day19A.cs" />
+    <Compile Include="Days\Day19B.cs" />
+    <Compile Include="Days\Day20A.cs" />
+    <Compile Include="Days\Day20B.cs" />
+    <Compile Include="Days\Day21A.cs" />
+    <Compile Include="Days\Day21B.cs" />
+    <Compile Include="Days\Day22A.cs" />
+    <Compile Include="Days\Day22B.cs" />
+    <Compile Include="Days\Day23B.cs" />
+    <Compile Include="Days\Day23A.cs" />
+    <Compile Include="Days\Day24B.cs" />
+    <Compile Include="Days\Day24A.cs" />
+    <Compile Include="Days\Day02B.cs" />
+    <Compile Include="Days\Day02A.cs" />
+    <Compile Include="Days\Day03A.cs" />
+    <Compile Include="Days\Day03B.cs" />
+    <Compile Include="Days\Day04A.cs" />
+    <Compile Include="Days\Day04B.cs" />
+    <Compile Include="Days\Day05B.cs" />
+    <Compile Include="Days\Day05A.cs" />
+    <Compile Include="Days\Day06B.cs" />
+    <Compile Include="Days\Day06A.cs" />
+    <Compile Include="Days\Day07A.cs" />
+    <Compile Include="Days\Day07B.cs" />
+    <Compile Include="Days\Day08B.cs" />
+    <Compile Include="Days\Day08A.cs" />
+    <Compile Include="Days\Day09A.cs" />
+    <Compile Include="Days\Day09B.cs" />
+    <Compile Include="Days\Day25A.cs" />
+    <Compile Include="Days\Day25B.cs" />
+    <Compile Include="Extensions\IntArrayExtensions.cs" />
+    <Compile Include="Md5Stringifier.cs" />
+    <Compile Include="Extensions\PermutationExtensions.cs" />
+    <Compile Include="Problem\ProblemFactory.cs" />
+    <Compile Include="Extensions\ProblemExtensions.cs" />
+    <Compile Include="Parsers\MultiLineStringParser.cs" />
+    <Compile Include="Parsers\SingleLineStringParser.cs" />
+    <Compile Include="Parsers\IInputParser.cs" />
+    <Compile Include="Parsers\InputParser.cs" />
+    <Compile Include="Problem\IProblem.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Problem\ProblemTimerDecorator.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="SubsetSum.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Input\day01.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Input\day10.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Input\day11.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Input\day12.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Input\day13.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Input\day14.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Input\day15.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Input\day16.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Input\day17.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Input\day18.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Input\day19.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Input\day20.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Input\day21.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Input\day22.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Input\day23.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Input\day24.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Input\day02.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Input\day03.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Input\day04.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Input\day05.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Input\day06.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Input\day07.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Input\day08.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Input\day09.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Input\day25.in">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
