@@ -1,11 +1,13 @@
-﻿using AdventOfCode.Solutions.Parsers;
-using AdventOfCode.Solutions.Problem;
+﻿using System;
+using System.Threading.Tasks;
+using AdventOfCode.Solutions.Extensions;
+using AdventOfCode.Solutions.Parsers;
 
 namespace AdventOfCode.Solutions.Days
 {
-    using ParserType = MultiLineStringParser;
+    using ParserType = SingleLineStringParser;
 
-    public class Day5B : IProblem
+    public class Day5B : Day5A
     {
         private readonly ParserType _parser;
 
@@ -13,9 +15,22 @@ namespace AdventOfCode.Solutions.Days
 
         public Day5B() : this(new ParserType("day05.in")) { }
 
-        public virtual string Solve()
+        public override string Solve()
         {
-            return "Unsolved";
+            var input = _parser.GetData();
+            var reversePolarity = CreatePolarityLookup();
+            input = ReactPolymerFast(input, reversePolarity);
+            var min = int.MaxValue;
+   
+            for (char lower = 'a', upper = 'A'; lower <= 'z'; lower++, upper++)
+            {
+                var currentInput = input.RemoveChars(lower, upper);
+                var size = ReactPolymerFast(currentInput, reversePolarity).Length;
+                if (size < min)
+                    min = size;
+            }
+
+            return min.ToString();
         }
     }
 }

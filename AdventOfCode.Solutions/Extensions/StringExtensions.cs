@@ -1,10 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace AdventOfCode.Solutions.Extensions
 {
     public static class StringExtensions
     {
+        public static string RemoveChars(this string s, params char[] characters)
+        {
+            var hash = new HashSet<char>(characters);
+            var sb = new StringBuilder();
+            foreach (var c in s)
+            {
+                if (!hash.Contains(c))
+                    sb.Append(c);
+            }
+
+            return sb.ToString();
+        }
+
         public static int[] ParseDelimitedInts(this string line, params char[] delimiters)
         {
             return Array.ConvertAll(

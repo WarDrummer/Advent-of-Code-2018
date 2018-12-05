@@ -1,4 +1,7 @@
-﻿namespace AdventOfCode.Solutions
+﻿using System.Collections.Generic;
+using System.Text;
+
+namespace AdventOfCode.Solutions
 {
     public class Node<TValue>
     {
@@ -11,6 +14,18 @@
         {
             Value = value;
             Next = next;
+        }
+
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            var current = this;
+            do
+            {
+                sb.Append(current.Value);
+                current = current.Next;
+            } while (current != this && current != null);
+            return sb.ToString();
         }
     }
 }
