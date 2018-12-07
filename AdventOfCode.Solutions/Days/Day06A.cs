@@ -21,13 +21,6 @@ namespace AdventOfCode.Solutions.Days
         {
             var points = GetPoints();
             var boundingBox = GetBoundingBox(points);
-
-            // magic... need to figure out why this worked
-            // I kept shrinking the box until I saw a number repeated in the results
-            // This will not produce the correct answer consistently
-            for (var i = 0; i < 38; i++)
-                boundingBox.Shrink();
-
             var counts = GetClosestNumberOfPointsCounts(boundingBox, points);
             var max = GetMaxCount(points, boundingBox, counts);
             return max.ToString();
@@ -79,11 +72,31 @@ namespace AdventOfCode.Solutions.Days
 
         protected static IEnumerable<Coordinate> GetFinitePoints(Coordinate[] points, BoundingBox boundingBox)
         {
-            var finitePoints = new List<Coordinate>();
-            foreach (var pt in points)
-                if (boundingBox.Contains(pt))
-                    finitePoints.Add(pt);
+            var infinitePoints = new HashSet<Coordinate>();
+            foreach (var boundaryPoint in boundingBox.GetBoundaryPoints())
+            {
+                var minDistance = int.MaxValue;
+                var minPoint = new Coordinate(0,0);
+                foreach (var point in points)
+                {
+                    var distance = point.DistanceTo(boundaryPoint);
+                    if (distance < minDistance)
+                    {
+                        minDistance = distance;
+                        minPoint = point;
+                    }
+                }
 
+                if (!infinitePoints.Contains(minPoint))
+                    infinitePoints.Add(minPoint);
+            }
+
+            var finitePoints = new List<Coordinate>();
+            foreach (var point in points)
+            {
+                if(!infinitePoints.Contains(point))
+                    finitePoints.Add(point);
+            }
             return finitePoints;
         }
 
@@ -120,10 +133,10 @@ namespace AdventOfCode.Solutions.Days
 
     public class BoundingBox
     {
-        public int Left { get; private set; }
-        public int Right { get; private set; }
-        public int Bottom { get; private set; }
-        public int Top { get; private set; }
+        public int Left { get; }
+        public int Right { get; }
+        public int Bottom { get; }
+        public int Top { get; }
 
         public BoundingBox(int left, int right, int bottom, int top)
         {
@@ -133,28 +146,26 @@ namespace AdventOfCode.Solutions.Days
             Top = top;
         }
 
-        public void Shrink()
-        {
-            if (Left + 1 < Right - 1 && Bottom + 1 < Top - 1)
-            {
-                Left++;
-                Right--;
-                Bottom++;
-                Top--;
-            }
-        }
-
-        public bool Contains(Coordinate c)
-        {
-            return c.X < Right && c.X > Left &&
-                   c.Y < Top && c.Y > Bottom;
-        }
-
         public IEnumerable<Coordinate> GetCoordinates()
         {
             for(var x = Left; x <= Right; x++)
                 for(var y = Bottom; y <= Top; y++)
                     yield return new Coordinate(x, y);
+        }
+
+        public IEnumerable<Coordinate> GetBoundaryPoints()
+        {
+            for (var x = Left; x <= Right; x++)
+            {
+                yield return new Coordinate(x, Bottom);
+                yield return new Coordinate(x, Top);
+            }
+
+            for (var y = Bottom; y <= Top; y++)
+            {
+                yield return new Coordinate(Left, y);
+                yield return new Coordinate(Right, y);
+            }
         }
     }
 }
