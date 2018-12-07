@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using AdventOfCode.Solutions.Extensions;
+﻿using AdventOfCode.Solutions.Extensions;
 using AdventOfCode.Solutions.Parsers;
 
 namespace AdventOfCode.Solutions.Days

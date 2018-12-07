@@ -18,4 +18,5 @@ namespace AdventOfCode.Solutions.Days
             return "Unknown";
         }
     }
+
 }

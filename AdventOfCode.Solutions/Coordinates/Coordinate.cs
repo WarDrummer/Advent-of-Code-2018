@@ -1,4 +1,6 @@
-﻿namespace AdventOfCode.Solutions.Coordinates
+﻿using System;
+
+namespace AdventOfCode.Solutions.Coordinates
 {
     public struct Coordinate
     {
@@ -14,6 +16,11 @@
         public override string ToString()
         {
             return $"{X},{Y}";
+        }
+
+        public int DistanceTo(Coordinate c)
+        {
+            return Math.Abs(X - c.X) + Math.Abs(Y - c.Y);
         }
     }
 }

@@ -36,11 +36,9 @@ namespace AdventOfCode.Solutions.Coordinates
             }
         }
 
-        internal static IEnumerable<Coordinate> GenerateClockwise(int number)
+        internal static IEnumerable<Coordinate> GenerateClockwise(int number, int x = 1, int y = 1)
         {
             var count = 1;
-            var x = 1;
-            var y = 1;
             var width = 8;
 
             yield return new Coordinate(x, y);
