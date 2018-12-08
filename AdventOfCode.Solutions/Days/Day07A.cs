@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using AdventOfCode.Solutions.Parsers;
@@ -8,6 +7,54 @@ using AdventOfCode.Solutions.Problem;
 namespace AdventOfCode.Solutions.Days
 {
     using ParserType = MultiLineStringParser;
+
+    public class Instruction
+    {
+        public int Time { get; set; }
+
+        private readonly List<Instruction> _prerequisites = new List<Instruction>();
+        public char Name { get; }
+
+        public Instruction(char name)
+        {
+            Name = name;
+            Time = Name - 'A' + 61;
+        }
+
+        public bool HasPrerequisites()
+        {
+            return _prerequisites.Count > 0;
+        }
+
+        public void AddPrerequisite(Instruction i)
+        {
+            if (!_prerequisites.Contains(i))
+                _prerequisites.Add(i);
+        }
+
+        public void RemovePrerequisite(Instruction i)
+        {
+            if (_prerequisites.Contains(i))
+                _prerequisites.Remove(i);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Instruction instruction)
+                return Equals(instruction);
+            return false;
+        }
+
+        protected bool Equals(Instruction other)
+        {
+            return Name == other.Name;
+        }
+
+        public override int GetHashCode()
+        {
+            return Name;
+        }
+    }
 
     public class Day7A : IProblem
     {
@@ -19,68 +66,47 @@ namespace AdventOfCode.Solutions.Days
 
         public virtual string Solve()
         {
-            var requirements = new Dictionary<char, List<char>>();
-            var prereqs = new Dictionary<char, List<char>>();
+            var instructions = GetInstructions();
+            return GetStepOrder(instructions);
+        }
 
+        protected List<Instruction> GetInstructions()
+        {
+            var instructions = new List<Instruction>();
             foreach (var instruction in _parser.GetData())
             {
                 var prereq = instruction[5];
                 var step = instruction[36];
 
-                if (!requirements.ContainsKey(step))
-                    requirements.Add(step, new List<char>());
-                requirements[step].Add(prereq);
+                if (instructions.All(s => s.Name != step))
+                    instructions.Add(new Instruction(step));
 
-                if (!prereqs.ContainsKey(prereq))
-                    prereqs.Add(prereq, new List<char>());
-                prereqs[prereq].Add(step);
+                if (instructions.All(s => s.Name != prereq))
+                    instructions.Add(new Instruction(prereq));
+
+                instructions.First(i => i.Name == step).AddPrerequisite(
+                    instructions.First(i => i.Name == prereq));
             }
 
-            var stepsToAdd = new List<char>();
-            var steps = prereqs.Keys.ToArray();
-            foreach (var step in steps)
+            return instructions;
+        }
+
+        private static string GetStepOrder(ICollection<Instruction> instructions)
+        {
+            var sb = new StringBuilder();
+
+            while (instructions.Count > 0)
             {
-                if (requirements[step].Count < 1)
-                {
-                    stepsToAdd.Add(step);
-                    requirements.Remove(step);
-                }
+                var steps = instructions.Where(i => !i.HasPrerequisites()).OrderBy(s => s.Name).ToList();
+                var step = steps[0];
+                sb.Append(step.Name);
+                instructions.Remove(step);
+                foreach (var instruction in instructions)
+                    instruction.RemovePrerequisite(step);
             }
 
-            foreach (var step in stepsToAdd)
-            {
-                prereqs.Remove(step);
-            }
-
-
-            // get steps without prereqs
-
-            // sort alphabetically
-            // add to result
-            // remove from dictionary
-
-            //var prereqs = new List<char>();
-            //foreach (var instruction in _parser.GetData())
-            //{
-            //    var prereq = instruction[5];
-            //    var step = instruction[36];
-            //    if (!requirements.ContainsKey(step))
-            //        requirements.Add(step, new List<char>());
-            //    if(!prereqs.Contains(prereq))
-            //        prereqs.Add(prereq);
-
-            //    requirements[step].Add(prereq);
-            //}
-
-            //foreach (var step in requirements.Keys)
-            //    prereqs.Remove(step);
-
-            //var sb = new StringBuilder();
-            //sb.Append(prereqs[0]);
-
-            //Console.WriteLine(prereqs[0]);
-
-            return "Unknown";
+            var result = sb.ToString();
+            return result;
         }
     }
 
