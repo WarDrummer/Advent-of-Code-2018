@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using AdventOfCode.Solutions.Parsers;
 using AdventOfCode.Solutions.Problem;
 
@@ -17,15 +18,14 @@ namespace AdventOfCode.Solutions.Days
         public string Solve()
         {
             var sum = 0;
-            var input = _parser.GetData();
+            var input = _parser.GetData().ToArray();
             var seen = new HashSet<int>();
 
             while (true)
             {
                 foreach (var val in input)
                 {
-                    var num = int.Parse(val);
-                    sum += num;
+                    sum += int.Parse(val);
                     if (!seen.Contains(sum)) seen.Add(sum);
                     else return sum.ToString();
                 }

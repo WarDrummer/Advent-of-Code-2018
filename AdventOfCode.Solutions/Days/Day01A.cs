@@ -1,4 +1,5 @@
-﻿using AdventOfCode.Solutions.Parsers;
+﻿using System.Linq;
+using AdventOfCode.Solutions.Parsers;
 using AdventOfCode.Solutions.Problem;
 
 namespace AdventOfCode.Solutions.Days
@@ -15,15 +16,8 @@ namespace AdventOfCode.Solutions.Days
 
         public string Solve()
         {
-            var sum = 0;
             var input = _parser.GetData();
-
-            foreach (var val in input)
-            {
-                sum += int.Parse(val);
-            }
-
-            return sum.ToString();
+            return input.Sum(int.Parse).ToString();
         }
     }
 }

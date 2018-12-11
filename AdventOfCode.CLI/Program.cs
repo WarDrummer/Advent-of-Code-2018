@@ -107,19 +107,43 @@ namespace AdventOfCode
                 .Solve()
                 .ToConsole("Day 8B");
 
-            // */
-
             ProblemFactory.Create<Day9A>()
                 .SendToClipboard()
                 .AppendTime()
                 .Solve()
                 .ToConsole("Day 9A");
 
+
             ProblemFactory.Create<Day9B>()
                 .SendToClipboard()
                 .AppendTime()
                 .Solve()
                 .ToConsole("Day 9B");
+
+            ProblemFactory.Create<Day10A>()
+                .SendToClipboard()
+                .AppendTime()
+                .Solve()
+                .ToConsole("Day 10A");
+
+            ProblemFactory.Create<Day10B>()
+                .SendToClipboard()
+                .AppendTime()
+                .Solve()
+                .ToConsole("Day 10B");
+            // */
+
+            ProblemFactory.Create<Day11A>()
+                .SendToClipboard()
+                .AppendTime()
+                .Solve()
+                .ToConsole("Day 11A");
+
+            ProblemFactory.Create<Day11B>()
+                .SendToClipboard()
+                .AppendTime()
+                .Solve()
+                .ToConsole("Day 11B");
 
             Console.ReadKey();
         }
