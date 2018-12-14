@@ -142,8 +142,6 @@ namespace AdventOfCode
                 .AppendTime()
                 .Solve()
                 .ToConsole("Day 11B");
-            // */
-
 
             ProblemFactory.Create<Day12A>()
                 .SendToClipboard()
@@ -156,6 +154,19 @@ namespace AdventOfCode
                 .AppendTime()
                 .Solve()
                 .ToConsole("Day 12B");
+            // */
+
+            ProblemFactory.Create<Day13A>()
+                .SendToClipboard()
+                .AppendTime()
+                .Solve()
+                .ToConsole("Day 13A");
+
+            ProblemFactory.Create<Day13B>()
+                .SendToClipboard()
+                .AppendTime()
+                .Solve()
+                .ToConsole("Day 13B");
 
             Console.ReadKey();
         }
