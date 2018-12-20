@@ -26,6 +26,7 @@ namespace AdventOfCode.Solutions.Days
             var tracer = new WaterTracer(clay, boundingBox);
             tracer.Compute();
             tracer.CountWaterTiles();
+            tracer.Print();
             return tracer.TotalWaterCount.ToString();
         }
 
@@ -117,7 +118,6 @@ namespace AdventOfCode.Solutions.Days
                             }
                             else
                             {
-
                                 // hits left boundary of current bucket
                                 if (xLeft != null && leftHitBound > xLeft.Value.X)
                                 {
@@ -258,7 +258,7 @@ namespace AdventOfCode.Solutions.Days
                             file.Write("~");
                         else if (FlowingWater.Contains(new Coordinate(x, y)) && !_clay.Contains(new Coordinate(x, y)))
                             file.Write("|");
-                        file.Write(_clay.Contains(new Coordinate(x, y)) ? "#" : ".");
+                        else file.Write(_clay.Contains(new Coordinate(x, y)) ? "#" : " ");
                     }
 
                     file.WriteLine();
