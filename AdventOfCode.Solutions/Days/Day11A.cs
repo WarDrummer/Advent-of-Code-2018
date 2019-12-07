@@ -3,8 +3,6 @@ using AdventOfCode.Solutions.Problem;
 
 namespace AdventOfCode.Solutions.Days
 {
-    using ParserType = SingleLineStringParser;
-
     public class Day11A : IProblem
     {
         public virtual string Solve()
