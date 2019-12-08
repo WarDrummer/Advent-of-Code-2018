@@ -218,17 +218,29 @@ namespace AdventOfCode
                 .ToConsole("Day 17B");
             // */
 
-            ProblemFactory.Create<Day18A>()
-                .SendToClipboard()
-                .AppendTime()
-                .Solve()
-                .ToConsole("Day 18A");
+            //ProblemFactory.Create<Day18A>()
+            //    .SendToClipboard()
+            //    .AppendTime()
+            //    .Solve()
+            //    .ToConsole("Day 18A");
 
-            ProblemFactory.Create<Day18B>()
+            //ProblemFactory.Create<Day18B>()
+            //    .SendToClipboard()
+            //    .AppendTime()
+            //    .Solve()
+            //    .ToConsole("Day 18B");
+
+            ProblemFactory.Create<Day23A>()
+              .SendToClipboard()
+              .AppendTime()
+              .Solve()
+              .ToConsole("Day 23A");
+
+            ProblemFactory.Create<Day23B>()
                 .SendToClipboard()
                 .AppendTime()
                 .Solve()
-                .ToConsole("Day 18B");
+                .ToConsole("Day 23B");
 
             Console.ReadKey();
         }
